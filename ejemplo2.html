@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo2</title>
+</head>
+<body>
+    Valor 1: <input type="text" id="v1">
+    valor 2: <input type="text" id="v2">
+    resultado: <input type="text" id="v3">
+
+    <button onclick="sumar()">Sumar</button>
+    <button onclick="comparar()">Comparar</button>
+    <audio id="panteraRosa" src="La pantera rosa.mp3"></audio>
+</body>
+<script>
+    //metodos para solicitar informacion de usuario
+
+    function comparar(){
+    let a = parseInt(document.getElementById('v1').value)
+    let b = parseInt(document.getElementById('v2').value)
+
+    if(a>b){
+        document.getElementById('v3').style.backgroundColor = 'green'
+        document.getElementById('v3').style.borderColor='red'
+        document.getElementById('v3').style.borderRadius = '30px'
+        document.getElementById('btnsumar').style.display= 'none'
+        document.getElementById('v3').style.color = 'white'
+        document.getElementById('v3').value= 'a es mayor que b'
+        document.getElementById('panteraRosa').play()
+        //reproduzca un audio
+    }else{
+
+        }
+    }
+
+
+    function sumar(){
+   let a = parseInt(document.getElementById('v1').value)
+   let b = parseInt(document.getElementById('v2').value)
+   let suma = a + b;
+   document.getElementById('v3').value = suma;
+    }
+</script>
+</html>
