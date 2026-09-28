@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo3</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    let valor = null
+
+    let z = valor || 10;
+    console.log(z)
+
+    let valor2 = undefined
+    let z1 = valor || 10;
+    console.log(z1)
+
+    let valor3 = valor
+    let z2 = valor || 10;
+    console.log(z2)
+
+
+    let x= 0;
+    console.log(x)
+
+    x+=3;
+    console.log(x)
+
+    let y=0;
+    console.log(y)
+
+    y++;
+    console.log(y)
+
+
+    var clienteRegistrado = false;
+    var ivaIncluido = true;
+
+    let texto = "JavaScript Eloquente"
+
+    texto.startsWith("Java");
+    
+
+    let texto1 = "hola \n mundo"
+
+    console.log(texto1)
+
+    const poema = `
+    En el mar de los datos, 
+    los bits bailan en armonía.
+    ${2 + 2} son los pilares.
+`;
+
+    console.log(poema)
+
+    const nombre2 = "JavaScript";
+    console.log(`Hola ${nombre2} bienvenido`); ; 
+
+
+
+    let saludo = "Hola"
+    let nombre = "Mateo"
+   console.log(saludo,nombre)
+   console.log('hola me \u{1F600}"llamo" Mateo')
+    console.log(Infinity)
+    console.log("hola juan, \n bienvenido \n\u{1F600}")
+</script>
+</html>
