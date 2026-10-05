@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+   let subtotal = 85.50;
+   let impuesto = 0.08;
+   let propina1 = 0.15;
+   let propina2 = 0.20;
+
+   
+   let total = subtotal + (subtotal* impuesto) + (subtotal * propina1);
+   let total2 = subtotal + (subtotal* impuesto) + (subtotal * propina2);
+
+   function calificacion(p1, p2){
+        let servicio = prompt("Que propina desea dejar: 1. para 15% \n 2. para 20% ")
+        let p1 = 1
+        let p2 = 2
+
+    if (servicio==1)
+        propina1 = 0.15 
+   }elseif(servicio==2)
+        propina2 = 0.20
+   
+    
+
+    console.log("El total de la compra con propina de buen servicio es: ", total)
+    console.log("El total de la compra con propina de excelente servicios es: ", total2)
+</script>
+</html>
