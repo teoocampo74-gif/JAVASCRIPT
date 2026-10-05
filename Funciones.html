@@ -14,19 +14,17 @@ function division(a, b) {
 
 function suma() {
     let a = parseInt(prompt("Ingrese el primer numero: "));
-    let b = parseInt(prompt("Ingrese el segundo numero:"));
+    let b = parseInt(prompt("Ingrese el segundo numero: "));
     return a + b;
 }
-alert(suma())
+
 function suma2() {
-    let c = parseInt(prompt("Ingrese el primer numero: "));
-    let d = parseInt(prompt("Ingrese el segundo numero:"));
+    let c = parseInt(prompt("Ingrese el tercer numero: "));
+    let d = parseInt(prompt("Ingrese el cuarto numero: "));
     return c + d;
 }
-alert(suma2())
 
-
-alert(division(suma(a,b),suma2(c,d))/5)
+alert(division(suma(suma(a,b), suma2(c,d))) / 4);   
 
 /*    
 function multiplo() {
