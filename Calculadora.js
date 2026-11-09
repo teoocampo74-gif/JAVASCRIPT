@@ -114,3 +114,72 @@ function cadInsertar() {
     
     document.getElementById('ResCad').value = resultado;
 }
+
+// OPERACIONES SOBRE VECTORES
+
+function veCrear(){
+        var texto = document.getElementById("campo1").value;
+
+        if (texto !== "") {
+            var partes = texto.split(",");
+            var nuevoVector = [];
+            var correcto = true;
+
+            for (var i = 0; i < partes.length; i++) {
+                if (partes[i].trim() === "" || isNaN(Number(partes[i]))) {
+                    correcto = false;
+                } else {
+                    nuevoVector[i] = Number(partes[i]);
+                }
+            }
+
+            if (correcto) {
+                numeros = nuevoVector;
+
+                document.getElementById("resultado1").value =+ numeros.join(", ");
+            } else {
+                numeros = [];
+                alert("Ingrese números separados correctamente por comas");
+            }
+        } else {
+            alert("Ingrese los números");
+        }
+    }
+
+
+function veSumar(){
+        if (numeros.length > 0) {
+            var suma = 0;
+
+            for (var i = 0; i < numeros.length; i++) {
+                suma = suma + numeros[i];
+            }
+
+            document.getElementById("resultado1").value =suma;
+        } else {
+            alert("Primero debe crear el vector");
+        }
+    }
+
+function vePares(){
+      if (numeros.length > 0) {
+            var resultado = 1;
+            var hayPares = false;
+
+            for (var i = 0; i < numeros.length; i++) {
+                if ((i + 1) % 2 === 0) {
+                    resultado = resultado * numeros[i];
+                    hayPares = true;
+                }
+            }
+
+            if (hayPares) {
+                document.getElementById("resultado1").value = resultado;
+            } else {
+                document.getElementById("resultado1").value =
+                    "No hay posiciones pares";
+            }
+        } else {
+            alert("Primero debe crear el vector");
+        }
+    }
