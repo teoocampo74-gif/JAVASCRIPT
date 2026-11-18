@@ -82,104 +82,113 @@ function compararValores() {
 function cadComparar() {
     let c1 = document.getElementById('Cad1').value.length;
     let c2 = document.getElementById('Cad2').value.length;
+    let resultado = document.getElementById('ResCad');
 
     if (c1 > c2) {
-        document.getElementById('ResCad').value = "La Cadena 1 es mayor";
+        resultado.value = "La Cadena 1 es mayor";
     } else if (c2 > c1) {
-        document.getElementById('ResCad').value = "La Cadena 2 es mayor";
+        resultado.value = "La Cadena 2 es mayor";
     } else {
-        document.getElementById('ResCad').value = "Tienen el mismo tamaño";
+        resultado.value = "Tienen el mismo tamaño";
     }
 }
 
 function cadContar() {
     let c1 = document.getElementById('Cad1').value;
     let c2 = document.getElementById('Cad2').value;
+    let resultado = document.getElementById('ResCad');
 
+    if (c1 === "" || c2 === "") {
+        resultado.value = "Ingrese la Cadena 1 y la Cadena 2";
+        return;
+    }
+
+    let veces = c1.split(c2).length - 1;
+
+    if (veces === 0) {
+        resultado.value = "'" + c2 + "' no aparece en la Cadena 1";
+    } else if (veces === 1) {
+        resultado.value = "'" + c2 + "' aparece 1 vez";
+    } else {
+        resultado.value = "'" + c2 + "' aparece " + veces + " veces";
+    }
 }
 
 function cadEspacios() {
-    let c1 = document.getElementById('Cad1').value; 
-    let resultado = c1.replace(g, '');
-
+    let c1 = document.getElementById('Cad1').value;
+    let resultado = c1.replace(/\s/g, '');
     document.getElementById('ResCad').value = resultado;
 }
-
 
 function cadInsertar() {
     let c1 = document.getElementById('Cad1').value;
     let c2 = document.getElementById('Cad2').value;
     let mitad = Math.floor(c1.length / 2);
     let resultado = c1.substring(0, mitad) + c2 + c1.substring(mitad);
-    
+
     document.getElementById('ResCad').value = resultado;
 }
 
+
+
 // OPERACIONES SOBRE VECTORES
 
-function veCrear(){
-        var texto = document.getElementById("campo1").value;
+function leerNumeros() {
+    let texto = document.getElementById("campo1").value.trim();
+    let resultado = document.getElementById("resVector");
 
-        if (texto !== "") {
-            var partes = texto.split(",");
-            var nuevoVector = [];
-            var correcto = true;
+    if (texto === "") {
+        resultado.value = "Ingrese números separados por coma";
+        return null;
+    }
 
-            for (var i = 0; i < partes.length; i++) {
-                if (partes[i].trim() === "" || isNaN(Number(partes[i]))) {
-                    correcto = false;
-                } else {
-                    nuevoVector[i] = Number(partes[i]);
-                }
-            }
+    let arreglo = texto.split(",");
+    let numeros = [];
+    for (let i = 0; i < arreglo.length; i++) {
+        if (arreglo[i].trim() === "" || isNaN(Number(arreglo[i]))) {
+            resultado.value = "Error: Solo se permiten números";
+            return null;
+        }
+        numeros.push(Number(arreglo[i]));
+    }
+    return numeros;
+}
 
-            if (correcto) {
-                numeros = nuevoVector;
+function crear() {
+    let numeros = leerNumeros();
+    if (numeros === null) return;
 
-                document.getElementById("resultado1").value =+ numeros.join(", ");
-            } else {
-                numeros = [];
-                alert("Ingrese números separados correctamente por comas");
-            }
-        } else {
-            alert("Ingrese los números");
+    document.getElementById("resVector").value = numeros.join(",");
+}
+
+function sumarVector() {
+    let numeros = leerNumeros();
+    if (numeros === null) return;
+
+    let suma = 0;
+    for (let i = 0; i < numeros.length; i++) {
+        suma = suma + numeros[i];
+    }
+    document.getElementById("resVector").value = suma;
+}
+
+function pares() {
+    let numeros = leerNumeros();
+    if (numeros === null) return;
+
+    let listaPares = [];
+    for (let i = 0; i < numeros.length; i++) {
+        if (numeros[i] % 2 === 0) {
+            listaPares.push(numeros[i]);
         }
     }
 
-
-function veSumar(){
-        if (numeros.length > 0) {
-            var suma = 0;
-
-            for (var i = 0; i < numeros.length; i++) {
-                suma = suma + numeros[i];
-            }
-
-            document.getElementById("resultado1").value =suma;
-        } else {
-            alert("Primero debe crear el vector");
-        }
+    let resultado = document.getElementById("resVector");
+    if (listaPares.length === 0) {
+        resultado.value = "No hay números pares";
+    } else if (listaPares.length === 1) {
+        resultado.value = "Hay 1 número par: " + listaPares[0];
+    } else {
+        resultado.value = "Hay " + listaPares.length + " números pares: " + listaPares.join(",");
     }
-
-function vePares(){
-      if (numeros.length > 0) {
-            var resultado = 1;
-            var hayPares = false;
-
-            for (var i = 0; i < numeros.length; i++) {
-                if ((i + 1) % 2 === 0) {
-                    resultado = resultado * numeros[i];
-                    hayPares = true;
-                }
-            }
-
-            if (hayPares) {
-                document.getElementById("resultado1").value = resultado;
-            } else {
-                document.getElementById("resultado1").value =
-                    "No hay posiciones pares";
-            }
-        } else {
-            alert("Primero debe crear el vector");
-        }
-    }
+}
